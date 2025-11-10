@@ -5,8 +5,8 @@ namespace A1_ZweiThreadsZaehlenWinner;
 
 class Program
 {
-   int countUp = 0;
-   int countDown = 0;
+   static int countUp = 0;
+   static int countDown = 0;
     
     public static void Main(string[] args)
     {
@@ -20,6 +20,8 @@ class Program
 
         thread1.Join();
         thread2.Join();
+
+        
     }
     
     private static void CountUpThreadA()
@@ -28,15 +30,17 @@ class Program
         {
             Thread.Sleep(100);
             countUp = countUp + 1;
+            System.Console.WriteLine(countUp);
         }
     }
     
     private static void CountDownThreadB()
     {
-       for(int i = 1; i <= 100; i++)
+       for(int i = 100; i <= 1; i--)
         {
             Thread.Sleep(100);
             countDown = countDown - 1;
+            System.Console.WriteLine(countDown);
         }
     }
 }
